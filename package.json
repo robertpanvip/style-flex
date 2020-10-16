@@ -3,14 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "description": "",
-  "main": "dist/fle.min.js",
-  "jsnext:main": "dist/src/Flex",
+  "main": "src/Flex.js",
+  "module": "src/Flex.js",
+  "unpkg": "dist/flex.min.js",
   "scripts": {
     "update_snapshot": "jest --updateSnapshot",
     "test": "jest --colors -u",
     "lint": "eslint src demo --quiet",
     "start": "node run.js",
-    "build": "node build.js"
+    "build": "prepare.sh",
+    "unpkg": "node unpkg.js"
   },
   "keywords": [
     "flex"

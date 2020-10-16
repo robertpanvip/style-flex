@@ -1,13 +1,15 @@
 const path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');// js压缩
 const webpack = require('webpack');
+//"build": "prepare.sh"
 const compiler=webpack({
     entry: [
         './src/Flex.js'
     ],
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'flex.min.js'
+        filename: 'flex.min.js',
+        library:'Flex',
+        libraryTarget: 'umd'
     },
     resolve: {
         extensions: ['.js', '.jsx']
@@ -23,21 +25,16 @@ const compiler=webpack({
                             '@babel/preset-env',
                             {
                                 'targets': {
-                                    'browsers': ['ie >= 9', 'chrome >= 62']
-                                },
-                                'useBuiltIns': 'usage',
-                                'corejs': 3
+                                   /* 'browsers': ['ie >= 9', 'chrome >= 62'],*/
+                                    'esmodules':true
+                                }
                             }
                         ],
                         ['@babel/preset-react'],
                     ],
                     plugins: [
-                        ['@babel/plugin-transform-runtime', {
-                            'corejs': 3,
-                            'loose': true
-                        }],
-                        ['@babel/plugin-proposal-decorators', { 'legacy': true }],
                         ['@babel/plugin-proposal-class-properties', { 'loose': true }],
+                        ["@babel/plugin-transform-runtime"]
                     ]
                 },
                 include: [
@@ -48,21 +45,13 @@ const compiler=webpack({
     },
     mode: 'production',
     optimization: {
-        minimizer:  [// 压缩js
-            new UglifyJsPlugin({
-                uglifyOptions: {
-                    output: {
-                        comments: false,
-                    },
-                },
-            }),
-        ]//是否压缩代码
+        minimize:true
     }
 });
 compiler.run((err, stats) => {
     if (err || stats.hasErrors()) {
         // 在这里处理错误
-        console.log(err)
+        console.log(err,stats)
     }
     // 处理完成
 });

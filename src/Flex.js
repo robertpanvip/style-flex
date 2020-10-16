@@ -41,6 +41,7 @@ const ALIGN_CONTENT = {
 const FLEX_SHRINK = 1;//定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小
 const FLEX_GROW = 0;//定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大
 export default class Flex extends React.Component {
+    static _displayName ='Flex';
     static defaultProps = {
         is: 'div',
         inline: false,
@@ -613,7 +614,7 @@ export default class Flex extends React.Component {
         if (children) {
             _res = [...React.Children.map(children, item => {
                 let itemProps = {};
-                if (!isTextNode && item.type.name === 'Flex') {
+                if (!isTextNode && item.type._displayName === 'Flex') {
                     itemProps = {
                         ...item.props,
                         parent: this
@@ -663,7 +664,6 @@ export default class Flex extends React.Component {
             flexShrink = Flex.defaultStyle.flexShrink,
             ...rest
         } = style;
-        console.log(this.props)
         return React.createElement(is, {
             className,
             ref: ref => this.ref = ref,
@@ -680,3 +680,4 @@ export default class Flex extends React.Component {
 
     }
 }
+
