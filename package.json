@@ -1,9 +1,8 @@
 {
   "name": "style-flex",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.2",
   "description": "",
-  "main": "src/Flex.js",
+  "main": "dist/flex.min.js",
   "module": "src/Flex.js",
   "unpkg": "dist/flex.min.js",
   "scripts": {
@@ -11,6 +10,7 @@
     "build": "prepare.sh",
     "unpkg": "node unpkg.js"
   },
+  "files": ["dist","src"],
   "keywords": [
     "flex"
   ],
@@ -24,6 +24,7 @@
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
+    "@babel/runtime-corejs3": "^7.11.2",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "babel-loader": "^8.1.0",
@@ -40,6 +41,7 @@
     "sass": "^1.26.10",
     "sass-loader": "^9.0.2",
     "style-loader": "^1.2.1",
+
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0",
@@ -47,7 +49,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.11.2"
   },
   "peerDependencies": {
     "react": "*",

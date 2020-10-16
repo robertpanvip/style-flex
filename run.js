@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default;
 const Config = {
-    HOSTNAME: '192.168.1.100',
+    HOSTNAME: 'localhost',
     PORT: 9000
 };
 new WebpackDevServer(webpack({
