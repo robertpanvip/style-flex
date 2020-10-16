@@ -7,9 +7,6 @@
   "module": "src/Flex.js",
   "unpkg": "dist/flex.min.js",
   "scripts": {
-    "update_snapshot": "jest --updateSnapshot",
-    "test": "jest --colors -u",
-    "lint": "eslint src demo --quiet",
     "start": "node run.js",
     "build": "prepare.sh",
     "unpkg": "node unpkg.js"
